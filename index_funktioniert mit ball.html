@@ -1,0 +1,45 @@
+<Html>
+	<head>
+	<title> Pong </title>
+	<script type = "text/javascript" src = "phaser.min.js"></script>
+	<style type="text/css">
+	body { 
+			margin: 0;
+		}
+	</style>
+	</head>
+
+	<body> 
+		<script type="text/javascript">
+			var game = new Phaser.Game(800,600,Phaser.AUTO,'',{preload: preload, create: create , update : update});
+
+			function preload (){
+				 // game.load.image('paddle','assets/paddle.png');
+				 game.load.image('ball','assets/ball.png');
+			}
+
+			var ball;
+
+			function create() {
+				ball = create_ball(game.world.centerX,game.world.centerY);
+			}
+
+			function update() {
+
+			} 
+
+			function create_ball(x,y){
+        		var ball = game.add.sprite(x,y,'ball');
+        		ball.anchor.setTo(0.5,0.5);
+        		game.physics.arcade.enable(ball);
+        		ball.body.collideWorldBounds = true;
+        		ball.body.bounce.setTo(1,1);
+            	ball.body.maxVelocity = 600;
+            	// ball.scale.setTo(scale_a+scale_a/4,scale_b+scale_b/4);
+
+        		return ball;
+        	}
+		</script>
+	</body>
+
+</html>
